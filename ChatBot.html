@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #chatbox {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="chat"></div>
+        <input type="text" id="user-input" placeholder="Type a message...">
+    </div>
+
+    <script>
+        const chatbox = document.getElementById('chat');
+        const userInput = document.getElementById('user-input');
+
+        function botResponse(userMessage) {
+            const lowerCaseMessage = userMessage.toLowerCase();
+
+            if (lowerCaseMessage.includes('hello') || lowerCaseMessage.includes('hi')) {
+                return 'Hello! How can I help you today?';
+            } else if (lowerCaseMessage.includes('how are you')) {
+                return "I'm just a bot, but I'm doing well! How can I assist you?";
+            } else if (lowerCaseMessage.includes('bye')) {
+                return 'Goodbye! Have a great day!';
+            } else {
+                return "I'm sorry, I don't understand that message.";
+            }
+        }
+
+        function sendMessage(message, isUser = false) {
+            const messageElement = document.createElement('div');
+            messageElement.className = isUser ? 'user' : 'bot';
+            messageElement.textContent = message;
+            chatbox.appendChild(messageElement);
+        }
+
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const userMessage = userInput.value;
+                sendMessage(userMessage, true);
+                userInput.value = '';
+
+                setTimeout(() => {
+                    const response = botResponse(userMessage);
+                    sendMessage(response);
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
