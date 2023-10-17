@@ -3,31 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chatbot</title>
+    <title>Chatbot</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         #chatbox {
-            width: 300px;
-            margin: 0 auto;
-            padding: 20px;
+            width: 400px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .chat-body {
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .user-message {
+            text-align: right;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #ccc;
+        }
+
+        #user-input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            outline: none;
+        }
+
+        #send-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-bottom-right-radius: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div id="chatbox">
-        <div id="chat"></div>
-        <input type="text" id="user-input" placeholder="Type a message...">
+        <div class="chat-header">
+            Our AI Chatbot
+        </div>
+        <div class="chat-body" id="chat"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+        </div>
     </div>
 
     <script>
         const chatbox = document.getElementById('chat');
         const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
 
         function botResponse(userMessage) {
             const lowerCaseMessage = userMessage.toLowerCase();
@@ -45,14 +108,15 @@
 
         function sendMessage(message, isUser = false) {
             const messageElement = document.createElement('div');
-            messageElement.className = isUser ? 'user' : 'bot';
+            messageElement.className = isUser ? 'user-message' : 'bot-message';
             messageElement.textContent = message;
             chatbox.appendChild(messageElement);
+            chatbox.scrollTop = chatbox.scrollHeight;
         }
 
-        userInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const userMessage = userInput.value;
+        function handleUserInput() {
+            const userMessage = userInput.value;
+            if (userMessage) {
                 sendMessage(userMessage, true);
                 userInput.value = '';
 
@@ -60,6 +124,13 @@
                     const response = botResponse(userMessage);
                     sendMessage(response);
                 }, 500);
+            }
+        }
+
+        sendButton.addEventListener('click', handleUserInput);
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                handleUserInput();
             }
         });
     </script>
