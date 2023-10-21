@@ -73,12 +73,82 @@
             background-color: #258cd1;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
+         footer{
+    padding: 8vw;
+    background-color: #101c32;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+footer .footer-col{
+    padding: 40px;
+}
+footer h3{
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+footer li{
+    list-style: none;
+    color: #7b838a;
+    padding: 10px 0;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+footer li:hover{
+    color: #fff;
+}
+
+footer p{
+    color: #7b838a;
+}
+
+footer .subscribe{
+    margin-top: 20px;
+}
+
+footer input{
+    width: 220px;
+    padding: 15px 12px;
+    background: #334F6C;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+footer .subscribe a{
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 15px 12px;
+    background-color: aliceblue;
+    font-weight: 600;
+}
+
+footer .subscribe a.yellow{
+    color: white;
+    background: rgb(2, 56, 141);
+    transition: 0.3s ease;
+}
+
+footer .subscribe a.yellow:hover{
+    color: rgb(21, 21, 100);
+    background:white;
+}
+
+footer .copyright{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
     </style>
 </head>
 <body>
@@ -103,7 +173,48 @@
         <!-- More product listings go here -->
     </div>
     <footer>
-        &copy; 2023 Merchant Webpage. All rights reserved.
+        <div class="footer-col">
+            <h3>Links</h3>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div class="footer-col">
+            <h3>Legal Policy</h3>
+            <li>Contact us</li>
+            <li>Privacy policy</li>
+            <li>Terms & Conditions</li>
+            <li>Share Experience</li>
+        </div>
+        <div class="footer-col">
+            <h3>Links</h3>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div class="footer-col">
+            <h3>Links</h3>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            
+        </div>
+        
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>Subscribe our Newsletter to get updated</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your email address">
+                <a href="#" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy 2023 Merchant Webpage. All rights reserved. </p>
+        </div>
+
     </footer>
 </body>
 </html>
