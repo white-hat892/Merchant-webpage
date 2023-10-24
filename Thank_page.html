@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="success.css">
+    <title>Appointment Success</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.success-container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #3498db;
+    font-size: 24px;
+}
+
+p {
+    font-size: 18px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <h1>Your Request Has Been Successfully Submitted</h1>
+        <p>Thank you for choosing a caregiver. We'll get in touch with you shortly.</p>
+        <a href="html.html">Go to home page</a>
+    </div>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+    
+            const formData = new FormData(event.target);
+            const formValues = {};
+    
+            formData.forEach((value, key) => {
+                formValues[key] = value;
+            });
+    
+            // You can replace this with your desired action (e.g., sending data to the server).
+            // After the form submission, redirect the user to the "success" page.
+            window.location.href = 'success.html';
+        }
+    </script>
+    
+</body>
+
+</html>
